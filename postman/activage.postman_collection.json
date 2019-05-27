@@ -1,0 +1,1362 @@
+{
+	"info": {
+		"_postman_id": "6327038b-5d1b-4437-96e3-02f2fa8adbca",
+		"name": "activage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "metadata-storage-server",
+			"item": [
+				{
+					"name": "Create device",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"deviceID\": \"test_device\",\r\n\t\"context\": \"@prefix iotpex: <http://inter-iot.eu/GOIoTP#> . @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . @prefix sosa: <http://www.w3.org/ns/sosa/> . @prefix act: <http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#> . <Device/1_1> a iotpex:IoTDevice ; rdfs:label \\\"Fibaro motion sensor\\\"@en ; sosa:hosts <Sensor/1_1> ; sosa:hosts <Sensor/1_2> ; sosa:hosts <Sensor/1_3> . <Sensor/1_1 > a act:IlluminanceSensor . <Sensor/1_2 > a act:TemperatureSensor . <Sensor/1_3 > a act:UserOccupancySensor .\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/devices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List devices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/devices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get device by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/devices/test_device_4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"devices",
+								"test_device_4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update device",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"deviceID\": \"test_device\",\r\n\t\"context\": \"@prefix iotpex: <http://inter-iot.eu/GOIoTP#> . @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . @prefix sosa: <http://www.w3.org/ns/sosa/> . @prefix act: <http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#> . <Device/1_1> a iotpex:IoTDevice ; rdfs:label \\\"Fibaro motion sensor\\\"@en ; sosa:hosts <Sensor/1_1> ; sosa:hosts <Sensor/1_2> ; sosa:hosts <Sensor/1_3> ;  sosa:hosts <Sensor/1_4> . <Sensor/1_1 > a act:IlluminanceSensor . <Sensor/1_2 > a act:TemperatureSensor . <Sensor/1_3 > a act:UserOccupancySensor . <Sensor/1_4 > a act:UserOccupancySensor . \"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/devices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete device",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/devices/deviceId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"devices",
+								"deviceId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create deployment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\": \"test_ds_1\",\r\n\t\"context\": \"@prefix prov: <http://www.w3.org/ns/prov#>. @prefix ssn: <http://www.w3.org/ns/ssn/> . @prefix iot: <http://inter-iot.eu/GOIoTP#> . @prefix org: <http://www.w3.org/ns/org#> . @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>. @prefix sosa: <http://www.w3.org/ns/sosa/> . <Organization/1> a org:Organization ; rdfs:label \\\"Municipality of Thessaloniki.\\\"@en . <Deployment/PX_HOME1> a ssn:Deployment ; prov:startedAtTime \\\"2017-06-06\\\"^^xsd:date ; iot:hasLocation \\\"AREA[“Thessaloniki\\\"]\\\"^^http://www.opengis.net/ont/geosparql#wktLiteral prov:wasAssociatedWith <Organization/1> ; ssn:deployedOnPlatform <Platform/1> . <Platform/1> a sosa:Platform ; rdfs:label \\\"Activage Platform GR 1\\\"@en ; sosa:hosts <Device/1_1> ; sosa:hosts <Device/1_2>\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/deployments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"deployments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all deployments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/deployments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"deployments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get deployment by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/deployments/test_ds_1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"deployments",
+								"test_ds_1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update deployment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"id\": \"test_ds_1\",\r\n\t\"context\": \"@prefix prov: <http://www.w3.org/ns/prov#>. @prefix ssn: <http://www.w3.org/ns/ssn/> . @prefix iot: <http://inter-iot.eu/GOIoTP#> . @prefix org: <http://www.w3.org/ns/org#> . @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>. @prefix sosa: <http://www.w3.org/ns/sosa/> . <Organization/1> a org:Organization ; rdfs:label \\\"Municipality of Thessaloniki.\\\"@en . <Deployment/PX_HOME1> a ssn:Deployment ; prov:startedAtTime \\\"2017-06-06\\\"^^xsd:date ; iot:hasLocation \\\"AREA[“Thessaloniki\\\"]\\\"^^http://www.opengis.net/ont/geosparql#wktLiteral prov:wasAssociatedWith <Organization/1> ; ssn:deployedOnPlatform <Platform/1> . <Platform/1> a sosa:Platform ; rdfs:label \\\"Activage Platform GR 1\\\"@en ; sosa:hosts <Device/1_1> ; sosa:hosts <Device/1_2>\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/deployments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"deployments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete deployment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/deployments/test_ds_1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"deployments",
+								"test_ds_1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "maintenance-panel",
+			"item": [
+				{
+					"name": "retrieve records by element id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8003/api/v1/records/element/elementId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"records",
+								"element",
+								"elementId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"elementId\": \"elementId\",\n\t\"description\": \"description40\",\n\t\"status\": \"pending\",\n\t\"type\": \"note\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/v1/records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update record",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"elementId\": \"elementId\",\n    \"description\": \"description12\",\n    \"status\": \"pending\",\n    \"type\": \"issue\",\n    \"timestamp\": 1555316554106\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/v1/records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8003/api/v1/records/2/element/elementId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8003",
+							"path": [
+								"api",
+								"v1",
+								"records",
+								"2",
+								"element",
+								"elementId"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "component-configuration",
+			"item": [
+				{
+					"name": "clients",
+					"item": [
+						{
+							"name": "retrieve current client",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "{{Client-ID}}",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8002/api/v1/clients/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"clients",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "set current client",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "{{Client-ID}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"clientId\": \"myclient\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8002/api/v1/clients/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"clients",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieve sil registered clients",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8002/api/v1/clients",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"clients"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "devices",
+					"item": [
+						{
+							"name": "List all devices registered from a specific platform",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "Oscar",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8002/api/v1/devices?platformId=http://example.inter-iot.eu/platforms/UAAL",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"devices"
+									],
+									"query": [
+										{
+											"key": "platformId",
+											"value": "http://example.inter-iot.eu/platforms/UAAL"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register device",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "Oscar"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n      \"deviceTypes\": [\n        \"DEVICE\"\n      ],\n      \"deviceId\": \"http://Hopy\",\n      \"hostedBy\": \"http://inter-iot.eu/platforms/UAAL\",\n      \"location\": \"http://fasda\",\n      \"name\": \"http://HOPu\",\n      \"hosts\": [\n        \"string\"\n      ],\n      \"forProperty\": [],\n      \"madeActuation\": \"string\",\n      \"implementsProcedure\": \"string\",\n      \"observes\": [],\n      \"detects\": \"string\",\n      \"madeObservation\": \"string\"\n    }\n"
+								},
+								"url": {
+									"raw": "http://localhost:8002/api/v1/devices",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"devices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update device",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "Oscar"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\n      \"deviceTypes\": [\n        \"DEVICE\"\n      ],\n      \"deviceId\": \"http://Hopy\",\n      \"hostedBy\": \"http://inter-iot.eu/platforms/UAAL\",\n      \"location\": \"http://fasda\",\n      \"name\": \"http://HOPu\",\n      \"hosts\": [\n        \"strong\"\n      ],\n      \"forProperty\": [],\n      \"madeActuation\": \"string\",\n      \"implementsProcedure\": \"string\",\n      \"observes\": [],\n      \"detects\": \"string\",\n      \"madeObservation\": \"string\"\n    }\n"
+								},
+								"url": {
+									"raw": "http://localhost:8002/api/v1/devices",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"devices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete specified device",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "Oscar"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8002/api/v1/devices/?deviceId=http://Hopy",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"devices",
+										""
+									],
+									"query": [
+										{
+											"key": "deviceId",
+											"value": "http://Hopy"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "platforms",
+					"item": [
+						{
+							"name": "list all platforms registered",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "Oscar"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8002/api/v1/platforms",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"platforms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list platform types",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "{{Client-ID}}"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8002/api/v1/platforms/types",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"platforms",
+										"types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register a new platform instance",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "Oscar"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"platformId\": \"http://inter-iot.eu/platforms/Bobo\", \n  \"type\": \"http://inter-iot.eu/UniversAAL\",\n  \"baseEndpoint\": \"http://192.168.1.0:1234\", \n  \"location\": \"http://test.inter-iot.eu/prueba\",\n  \"name\": \"Bobo\",\n  \"username\": \"\",\n  \"encryptedPassword\": \"\",\n  \"encryptionAlgorithm\": \"\",\n  \"downstreamInputAlignmentName\": \"\",\n  \"downstreamInputAlignmentVersion\": \"\",\n  \"downstreamOutputAlignmentName\": \"\",\n  \"downstreamOutputAlignmentVersion\": \"\",\n  \"upstreamInputAlignmentName\": \"\",\n  \"upstreamInputAlignmentVersion\": \"\",\n  \"upstreamOutputAlignmentName\": \"\",\n  \"upstreamOutputAlignmentVersion\": \"\"\n}\n"
+								},
+								"url": {
+									"raw": "http://localhost:8002/api/v1/platforms",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"platforms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update platform instance",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "Oscar"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"baseEndpoint\": \"http://192.168.1.0:1234\", \n  \"location\": \"http://test.inter-iot.eu/prueba\",\n  \"name\": \"Bobo\",\n  \"username\": \"Oscar\",\n  \"encryptedPassword\": \"\",\n  \"encryptionAlgorithm\": \"\",\n  \"downstreamInputAlignmentName\": \"\",\n  \"downstreamInputAlignmentVersion\": \"\",\n  \"downstreamOutputAlignmentName\": \"\",\n  \"downstreamOutputAlignmentVersion\": \"\",\n  \"upstreamInputAlignmentName\": \"\",\n  \"upstreamInputAlignmentVersion\": \"\",\n  \"upstreamOutputAlignmentName\": \"\",\n  \"upstreamOutputAlignmentVersion\": \"\"\n}\n"
+								},
+								"url": {
+									"raw": "http://localhost:8002/api/v1/platforms?platformId=http://inter-iot.eu/platforms/Bobo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"platforms"
+									],
+									"query": [
+										{
+											"key": "platformId",
+											"value": "http://inter-iot.eu/platforms/Bobo"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove specified platform instance",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Client-ID",
+										"value": "Oscar"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8002/api/v1/platforms/?platformId=http://inter-iot.eu/platforms/HOPo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"api",
+										"v1",
+										"platforms",
+										""
+									],
+									"query": [
+										{
+											"key": "platformId",
+											"value": "http://inter-iot.eu/platforms/HOPo"
+										}
+									]
+								},
+								"description": "Removes specified platform from the registry and undeploys the bridge."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "analytics-tools",
+			"item": [
+				{
+					"name": "Select feature - filter method - pearson - query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataDesc\": {\n    \"query\": \"select temperature, humidity, gas_no2 from env_sensors where ds = 'DS_GRC'\"\n  },\n  \"method\":  \"pearson\"\n}"
+						},
+						"url": {
+							"raw": "http://192.168.1.192:5000/selectFeatures/filterMethod",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"192"
+							],
+							"port": "5000",
+							"path": [
+								"selectFeatures",
+								"filterMethod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - filter method - pearson - data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataDesc\": {\n    \"data\": [\n    \t{\n    \t\t\"time\": [\"2019-02-20 09:00:00\", \"2019-02-20 10:00:00\", \"2019-02-20 11:00:00\", \"2019-02-20 12:00:00\", \"2019-02-20 13:00:00\", \"2019-02-20 14:00:00\", \"2019-02-20 15:00:00\", \"2019-02-20 16:00:00\", \"2019-02-20 17:00:00\", \"2019-02-20 18:00:00\", \"2019-02-20 19:00:00\", \"2019-02-20 20:00:00\", \"2019-02-20 21:00:00\", \"2019-02-20 22:00:00\", \"2019-02-20 23:00:00\", \"2019-02-21 00:00:00\", \"2019-02-21 01:00:00\", \"2019-02-21 02:00:00\", \"2019-02-21 03:00:00\", \"2019-02-21 04:00:00\", \"2019-02-21 05:00:00\", \"2019-02-21 06:00:00\", \"2019-02-21 07:00:00\", \"2019-02-21 08:00:00\", \"2019-02-21 09:00:00\", \"2019-02-21 10:00:00\", \"2019-02-21 11:00:00\", \"2019-02-21 12:00:00\", \"2019-02-21 13:00:00\", \"2019-02-21 14:00:00\", \"2019-02-21 15:00:00\", \"2019-02-21 16:00:00\", \"2019-02-21 17:00:00\", \"2019-02-21 18:00:00\", \"2019-02-21 19:00:00\", \"2019-02-21 20:00:00\", \"2019-02-21 21:00:00\", \"2019-02-21 22:00:00\", \"2019-02-21 23:00:00\", \"2019-02-22 00:00:00\", \"2019-02-22 01:00:00\", \"2019-02-22 02:00:00\", \"2019-02-22 03:00:00\", \"2019-02-22 04:00:00\", \"2019-02-22 05:00:00\", \"2019-02-22 06:00:00\", \"2019-02-22 07:00:00\", \"2019-02-22 08:00:00\", \"2019-02-22 09:00:00\", \"2019-02-22 10:00:00\", \"2019-02-22 11:00:00\", \"2019-02-22 12:00:00\", \"2019-02-22 13:00:00\", \"2019-02-22 14:00:00\", \"2019-02-22 15:00:00\", \"2019-02-22 16:00:00\", \"2019-02-22 17:00:00\", \"2019-02-22 18:00:00\", \"2019-02-22 19:00:00\", \"2019-02-22 20:00:00\", \"2019-02-22 21:00:00\", \"2019-02-22 22:00:00\", \"2019-02-22 23:00:00\", \"2019-02-23 00:00:00\", \"2019-02-23 01:00:00\", \"2019-02-23 02:00:00\", \"2019-02-23 03:00:00\", \"2019-02-23 04:00:00\", \"2019-02-23 05:00:00\", \"2019-02-23 06:00:00\", \"2019-02-23 07:00:00\", \"2019-02-23 08:00:00\", \"2019-02-23 09:00:00\", \"2019-02-23 10:00:00\", \"2019-02-23 11:00:00\", \"2019-02-23 12:00:00\", \"2019-02-23 13:00:00\", \"2019-02-23 14:00:00\", \"2019-02-23 15:00:00\", \"2019-02-23 16:00:00\", \"2019-02-23 17:00:00\", \"2019-02-23 18:00:00\", \"2019-02-23 19:00:00\", \"2019-02-23 20:00:00\", \"2019-02-23 21:00:00\", \"2019-02-23 22:00:00\", \"2019-02-23 23:00:00\", \"2019-02-24 00:00:00\", \"2019-02-24 01:00:00\", \"2019-02-24 02:00:00\", \"2019-02-24 03:00:00\", \"2019-02-24 04:00:00\", \"2019-02-24 05:00:00\", \"2019-02-24 06:00:00\", \"2019-02-24 07:00:00\", \"2019-02-24 08:00:00\", \"2019-02-24 09:00:00\", \"2019-02-24 10:00:00\", \"2019-02-24 11:00:00\", \"2019-02-24 12:00:00\", \"2019-02-24 13:00:00\", \"2019-02-24 14:00:00\", \"2019-02-24 15:00:00\", \"2019-02-24 16:00:00\", \"2019-02-24 17:00:00\", \"2019-02-24 18:00:00\", \"2019-02-24 19:00:00\", \"2019-02-24 20:00:00\", \"2019-02-24 21:00:00\", \"2019-02-24 22:00:00\", \"2019-02-24 23:00:00\", \"2019-02-25 00:00:00\", \"2019-02-25 01:00:00\", \"2019-02-25 02:00:00\", \"2019-02-25 03:00:00\", \"2019-02-25 04:00:00\", \"2019-02-25 05:00:00\", \"2019-02-25 06:00:00\", \"2019-02-25 07:00:00\", \"2019-02-25 08:00:00\"],\n    \t\t\"working-electrode-no2\": [289.84, 288.77, 286.62, 284.81, 285.56, 284.93, 285.36, 285.21, 284.95, 285.59, 286.47, 287.07, 286.68, 286.91, 287.89, 288.01, 287.73, 286.96, 288.85, 288.21, 286.86, 287.31, 288.3, 289.84, 288.21, 287.07, 286.46, 286.4, 284.27, 283.51, 283.26, 284.14, 284.72, 284.86, 286, 282.6, 286.68, 287.24, 288.31, 288.31, 286.55, 286.28, 286.12, 286.04, 286.84, 287.73, 280.01, 282.26, 281.28, 284.3, 84.21, 283.22, 283.37, 284.9, 285.1, 285.08, 285.37, 285.47, 286.25, 286.58, 286.16, 286.02, 285.89, 286.25, 286.43, 286.75, 288.73, 280.02, 288.56, 287.83, 288.64, 280.39, 286.76, 279.08, 285.17, 286.46, 285.7, 283.41, 281.89, 282.08, 282.53, 287.9, 281.68, 280.61, 285.95, 288.12, 280.25, 280.48, 287.25, 284.43, 285.04, 288.44, 280.5,289.05, 287.03, 287.32, 286.86, 283.61, 283.47, 285.06, 285.5, 284.69, 285.12, 284.28, 285.19, 285.63, 285.88, 286.69, 286.48, 286.03, 285.74, 285.81, 286, 286.26, 286.38, 286.54, 287.05, 287.63, 288.26, 280.41],\n    \t\t\"auxiliar-electrode-no2\": [288.92, 288.44, 287.95, 286.8, 287.33, 287.29, 287.05, 287.49, 287.25, 287.19, 287.63, 287.82, 288.33, 288.2, 288.47, 288.79, 289.24, 289.38, 289.97, 289.35, 289.46, 288.99, 288.91, 289.44, 289.11, 288.05, 287.22, 287.58, 287.02, 287.3, 286.32, 286.39, 286.42, 286.39, 286.95, 287.16, 287.7, 287.63, 288.07, 288, 287.94, 288.03, 288.5, 288.74, 288.78, 288.84, 289.08, 289.14, 289.51, 287.73, 287.29, 286.95, 286.33, 286.72, 287.03, 287.29, 287.27, 287.18, 287.75, 288.03, 288.17, 288.25, 288.3, 288.54, 288.62, 288.85, 289.52, 289.17, 289, 289.47, 289.07, 289.1, 289.79, 287.38, 284.95, 285.68, 285.63, 286.08, 285.97, 286.01, 285.49, 286.25, 287.58, 288.47, 287.79, 287.65, 287.97, 288.33, 288.3, 287.68, 287.41, 287.13, 287.42, 287.62, 287.97, 288.45, 288.98, 288.01, 287.64, 287.56, 287.1, 286.73, 286.97, 286.97, 286.6, 286.87, 287.4, 287.71, 287.8, 287.96, 287.89, 287.83, 287.85, 288.02, 288.21, 288.53, 288.92, 288.74, 288.49, 289.53]\n    \t}\n    \t]\n  },\n  \"method\":  \"pearson\"\n}"
+						},
+						"url": {
+							"raw": "http://192.168.1.192:5000/selectFeatures/filterMethod",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"192"
+							],
+							"port": "5000",
+							"path": [
+								"selectFeatures",
+								"filterMethod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - filter method - mutual information",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataDesc\": {\n    \"query\": \"select temperature, humidity, gas_no2 from env_sensors where ds = 'DS_GRC'\"\n  },\n  \"method\":  \"mutual_information\"\n}"
+						},
+						"url": {
+							"raw": "http://192.168.1.192:5000/selectFeatures/filterMethod",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"192"
+							],
+							"port": "5000",
+							"path": [
+								"selectFeatures",
+								"filterMethod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - filter method - mutual information - data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataDesc\": {\n    \"data\": [\n    \t{\n    \t\t\"working-electrode-no2\": [289.84, 288.77, 286.62, 284.81, 285.56, 284.93, 285.36, 285.21, 284.95, 285.59, 286.47, 287.07, 286.68, 286.91, 287.89, 288.01, 287.73, 286.96, 288.85, 288.21, 286.86, 287.31, 288.3, 289.84, 288.21, 287.07, 286.46, 286.4, 284.27, 283.51, 283.26, 284.14, 284.72, 284.86, 286, 282.6, 286.68, 287.24, 288.31, 288.31, 286.55, 286.28, 286.12, 286.04, 286.84, 287.73, 280.01, 282.26, 281.28, 284.3, 84.21, 283.22, 283.37, 284.9, 285.1, 285.08, 285.37, 285.47, 286.25, 286.58, 286.16, 286.02, 285.89, 286.25, 286.43, 286.75, 288.73, 280.02, 288.56, 287.83, 288.64, 280.39, 286.76, 279.08, 285.17, 286.46, 285.7, 283.41, 281.89, 282.08, 282.53, 287.9, 281.68, 280.61, 285.95, 288.12, 280.25, 280.48, 287.25, 284.43, 285.04, 288.44, 280.5,289.05, 287.03, 287.32, 286.86, 283.61, 283.47, 285.06, 285.5, 284.69, 285.12, 284.28, 285.19, 285.63, 285.88, 286.69, 286.48, 286.03, 285.74, 285.81, 286, 286.26, 286.38, 286.54, 287.05, 287.63, 288.26, 280.41],\n    \t\t\"auxiliar-electrode-no2\": [288.92, 288.44, 287.95, 286.8, 287.33, 287.29, 287.05, 287.49, 287.25, 287.19, 287.63, 287.82, 288.33, 288.2, 288.47, 288.79, 289.24, 289.38, 289.97, 289.35, 289.46, 288.99, 288.91, 289.44, 289.11, 288.05, 287.22, 287.58, 287.02, 287.3, 286.32, 286.39, 286.42, 286.39, 286.95, 287.16, 287.7, 287.63, 288.07, 288, 287.94, 288.03, 288.5, 288.74, 288.78, 288.84, 289.08, 289.14, 289.51, 287.73, 287.29, 286.95, 286.33, 286.72, 287.03, 287.29, 287.27, 287.18, 287.75, 288.03, 288.17, 288.25, 288.3, 288.54, 288.62, 288.85, 289.52, 289.17, 289, 289.47, 289.07, 289.1, 289.79, 287.38, 284.95, 285.68, 285.63, 286.08, 285.97, 286.01, 285.49, 286.25, 287.58, 288.47, 287.79, 287.65, 287.97, 288.33, 288.3, 287.68, 287.41, 287.13, 287.42, 287.62, 287.97, 288.45, 288.98, 288.01, 287.64, 287.56, 287.1, 286.73, 286.97, 286.97, 286.6, 286.87, 287.4, 287.71, 287.8, 287.96, 287.89, 287.83, 287.85, 288.02, 288.21, 288.53, 288.92, 288.74, 288.49, 289.53],\n    \t\t\"working-electrode-o3\": [409.24, 408.87, 408.66, 408.22, 408.54, 407.48, 408.83, 408.21, 408.12, 408.83, 409.58, 409.31, 409.61, 408.46, 408.21, 407.31, 407.29, 406.38, 408.33, 407.45, 406.08, 406.1, 406.87, 408.61, 406.04, 407.12, 408.76, 409.25, 407.44, 406.27, 406.06, 407.1, 407.8, 407.84, 409.42, 408.41, 407.62, 406.19, 407.89, 406.69, 404.17, 403.72, 403.76, 403.93, 404.03, 405.4, 407.73, 409.04, 409.24, 404.48, 406.02, 405.73, 407.71, 409.93, 409.56, 409.23, 409.22, 409.5, 409.95, 409.97, 409.88, 409.73, 408.7, 408.97, 408.35, 406.44, 407.19, 408.76, 405.87, 404.47, 405.17, 406.65, 401.5, 405.8, 407.57, 409.13, 408.89, 405.03, 403.18, 403.32, 405.96, 409.41, 406.23, 400.05, 402.1, 407.92, 402.51, 401.22, 404.86, 400.93, 403.45, 408.36, 401.47, 402.52, 409.83, 409.9, 408.68, 404.92, 405.53, 408.24, 400.08, 408.74, 400.43, 407.65, 400, 409.98, 400.26, 400.71, 400.05, 408.82, 407.71, 407.02, 405.43, 404.07, 404.18, 404.14, 406.13, 405.95, 406.08, 408.44]\n    \t}\n    \t]\n  },\n  \"method\":  \"mutual_information\"\n}"
+						},
+						"url": {
+							"raw": "http://192.168.1.192:5000/selectFeatures/filterMethod",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"192"
+							],
+							"port": "5000",
+							"path": [
+								"selectFeatures",
+								"filterMethod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - filter method - anova - query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataDesc\": {\n    \"query\": \"select temperature, humidity, gas_no2 from env_sensors where ds = 'DS_GRC'\"\n  },\n  \"method\": {\n  \t\"anova\": {\n  \t\t\"dependent_variable\": \"Working Electrode NO2\",\n  \t\t\"independent_variables\": [\"Auxiliar Electrode NO2\"]\n  \t}\n  }\n}"
+						},
+						"url": {
+							"raw": "http://192.168.1.192:5000/selectFeatures/filterMethod",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"192"
+							],
+							"port": "5000",
+							"path": [
+								"selectFeatures",
+								"filterMethod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - filter method - anova - data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataDesc\": {\n    \"data\": [\n    \t{\n    \t\t\"working-electrode-no2\": [289.84, 288.77, 286.62, 284.81, 285.56, 284.93, 285.36, 285.21, 284.95, 285.59, 286.47, 287.07, 286.68, 286.91, 287.89, 288.01, 287.73, 286.96, 288.85, 288.21, 286.86, 287.31, 288.3, 289.84, 288.21, 287.07, 286.46, 286.4, 284.27, 283.51, 283.26, 284.14, 284.72, 284.86, 286, 282.6, 286.68, 287.24, 288.31, 288.31, 286.55, 286.28, 286.12, 286.04, 286.84, 287.73, 280.01, 282.26, 281.28, 284.3, 84.21, 283.22, 283.37, 284.9, 285.1, 285.08, 285.37, 285.47, 286.25, 286.58, 286.16, 286.02, 285.89, 286.25, 286.43, 286.75, 288.73, 280.02, 288.56, 287.83, 288.64, 280.39, 286.76, 279.08, 285.17, 286.46, 285.7, 283.41, 281.89, 282.08, 282.53, 287.9, 281.68, 280.61, 285.95, 288.12, 280.25, 280.48, 287.25, 284.43, 285.04, 288.44, 280.5,289.05, 287.03, 287.32, 286.86, 283.61, 283.47, 285.06, 285.5, 284.69, 285.12, 284.28, 285.19, 285.63, 285.88, 286.69, 286.48, 286.03, 285.74, 285.81, 286, 286.26, 286.38, 286.54, 287.05, 287.63, 288.26, 280.41],\n    \t\t\"auxiliar-electrode-no2\": [288.92, 288.44, 287.95, 286.8, 287.33, 287.29, 287.05, 287.49, 287.25, 287.19, 287.63, 287.82, 288.33, 288.2, 288.47, 288.79, 289.24, 289.38, 289.97, 289.35, 289.46, 288.99, 288.91, 289.44, 289.11, 288.05, 287.22, 287.58, 287.02, 287.3, 286.32, 286.39, 286.42, 286.39, 286.95, 287.16, 287.7, 287.63, 288.07, 288, 287.94, 288.03, 288.5, 288.74, 288.78, 288.84, 289.08, 289.14, 289.51, 287.73, 287.29, 286.95, 286.33, 286.72, 287.03, 287.29, 287.27, 287.18, 287.75, 288.03, 288.17, 288.25, 288.3, 288.54, 288.62, 288.85, 289.52, 289.17, 289, 289.47, 289.07, 289.1, 289.79, 287.38, 284.95, 285.68, 285.63, 286.08, 285.97, 286.01, 285.49, 286.25, 287.58, 288.47, 287.79, 287.65, 287.97, 288.33, 288.3, 287.68, 287.41, 287.13, 287.42, 287.62, 287.97, 288.45, 288.98, 288.01, 287.64, 287.56, 287.1, 286.73, 286.97, 286.97, 286.6, 286.87, 287.4, 287.71, 287.8, 287.96, 287.89, 287.83, 287.85, 288.02, 288.21, 288.53, 288.92, 288.74, 288.49, 289.53],\n    \t\t\"working-electrode-o3\": [409.24, 408.87, 408.66, 408.22, 408.54, 407.48, 408.83, 408.21, 408.12, 408.83, 409.58, 409.31, 409.61, 408.46, 408.21, 407.31, 407.29, 406.38, 408.33, 407.45, 406.08, 406.1, 406.87, 408.61, 406.04, 407.12, 408.76, 409.25, 407.44, 406.27, 406.06, 407.1, 407.8, 407.84, 409.42, 408.41, 407.62, 406.19, 407.89, 406.69, 404.17, 403.72, 403.76, 403.93, 404.03, 405.4, 407.73, 409.04, 409.24, 404.48, 406.02, 405.73, 407.71, 409.93, 409.56, 409.23, 409.22, 409.5, 409.95, 409.97, 409.88, 409.73, 408.7, 408.97, 408.35, 406.44, 407.19, 408.76, 405.87, 404.47, 405.17, 406.65, 401.5, 405.8, 407.57, 409.13, 408.89, 405.03, 403.18, 403.32, 405.96, 409.41, 406.23, 400.05, 402.1, 407.92, 402.51, 401.22, 404.86, 400.93, 403.45, 408.36, 401.47, 402.52, 409.83, 409.9, 408.68, 404.92, 405.53, 408.24, 400.08, 408.74, 400.43, 407.65, 400, 409.98, 400.26, 400.71, 400.05, 408.82, 407.71, 407.02, 405.43, 404.07, 404.18, 404.14, 406.13, 405.95, 406.08, 408.44]\n    \t}\n    \t]\n  },\n  \"method\":  {\n  \t\"anova\": {\n  \t\t\"dependent_variable\": \"working-electrode-no2\",\n  \t\t\"independent_variables\": [\"auxiliar-electrode-no2\", \"working-electrode-o3\"]\n  \t}\n  }\n}"
+						},
+						"url": {
+							"raw": "http://192.168.1.192:5000/selectFeatures/filterMethod",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"192"
+							],
+							"port": "5000",
+							"path": [
+								"selectFeatures",
+								"filterMethod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clustering - hierarchical - query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"dataDesc\":{\n      \"query\":\"select temperature, humidity, gas_no2 from env_sensors where ds = 'DS_GRC'\"\n   },\n   \"options\":{\n      \"distanceType\":\"euclidean\",\n      \"linkage\":\"complete\",\n      \"n_clusters\":4\n   }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/clustering/hierarchical",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"clustering",
+								"hierarchical"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clustering - hierarchical - data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"dataDesc\": {\n    \t\"data\": [\n    \t\t{\"coords\": [5.1, 3.5, 1.4, 0.2]},\n    \t\t{\"coords\": [5.8, 4.0, 1.2, 0.2]},\n    \t\t{\"coords\": [5.7, 4.4, 1.5, 0.4]},\n    \t\t{\"coords\": [5.4, 3.9, 1.3, 0.4]},\n    \t\t{\"coords\": [5.1, 3.5, 1.4, 0.3]},\n    \t\t{\"coords\": [5.7, 3.8, 1.7, 0.3]},\n    \t\t{\"coords\": [5.1, 3.8, 1.5, 0.3]},\n    \t\t{\"coords\": [5.4, 3.4, 1.7, 0.2]},\n    \t\t{\"coords\": [5.1, 3.7, 1.5, 0.4]},\n    \t\t{\"coords\": [4.6, 3.6, 1.0, 0.2]}\n\t    ],\n\t    \"expression\": \"coords\"\n\t},\n\t\"options\": {\n\t    \"distanceType\": \"euclidean\",\n\t    \"linkage\": \"complete\",\n\t    \"n_clusters\": 3\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/clustering/hierarchical",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"clustering",
+								"hierarchical"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clustering - hierarchical - data expression",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"dataDesc\": {\n    \t\"data\": [\n    \t\t{\"temp\": [5.1, 3.5, 1.4, 0.2], \"humd\": [5.1, 3.5, 1.4, 0.2]},\n    \t\t{\"temp\": [5.8, 4.0, 1.2, 0.2], \"humd\": [5.1, 3.5, 1.4, 0.2]},\n    \t\t{\"temp\": [5.7, 4.4, 1.5, 0.4], \"humd\": [5.1, 3.5, 1.4, 0.2]},\n    \t\t{\"temp\": [5.4, 3.9, 1.3, 0.4], \"humd\": [5.1, 3.5, 1.4, 0.2]},\n    \t\t{\"temp\": [5.1, 3.5, 1.4, 0.3], \"humd\": [5.1, 3.5, 1.4, 0.2]},\n    \t\t{\"temp\": [5.7, 3.8, 1.7, 0.3], \"humd\": [5.1, 3.5, 1.4, 0.2]},\n    \t\t{\"temp\": [5.1, 3.8, 1.5, 0.3], \"humd\": [5.1, 3.5, 1.4, 0.2]},\n    \t\t{\"temp\": [5.4, 3.4, 1.7, 0.2], \"humd\": [5.1, 3.5, 1.4, 0.2]},\n    \t\t{\"temp\": [5.1, 3.7, 1.5, 0.4], \"humd\": [5.1, 3.5, 1.4, 0.2]},\n    \t\t{\"temp\": [4.6, 3.6, 1.0, 0.2], \"humd\": [5.1, 3.5, 1.4, 0.2]}\n\t    ],\n\t    \"expression\": \"temp * humd\"\n\t},\n\t\"options\": {\n\t    \"distanceType\": \"euclidean\",\n\t    \"linkage\": \"complete\",\n\t    \"n_clusters\": 3\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/clustering/hierarchical",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"clustering",
+								"hierarchical"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - wrapper method - arima - schema",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/wrapperMethod/arima",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"wrapperMethod",
+								"arima"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - wrapper method - arima - query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"dataDesc\":{\n\t\t\"query\":\"select temperature, humidity, gas_no2 from env_sensors where ds = 'DS_GRC'\"\n\t},\n\t\"options\":{\n\t\t\"attribute\":\"Pressure\",\n\t\t\"arOrder\": 5,\n\t\t\"iOrder\": 1,\n\t\t\"maOrder\": 0\n   }\n}"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/wrapperMethod/arima",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"wrapperMethod",
+								"arima"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - wrapper method - arima - data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"dataDesc\":{\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"Working Electrode NO2\": [289.84, 288.77, 286.62, 284.81, 285.56, 284.93, 285.36, 285.21, 284.95, 285.59, 286.47, 287.07, 286.68, 286.91, 287.89, 288.01, 287.73, 286.96, 288.85, 288.21, 286.86, 287.31, 288.3, 289.84, 288.21, 287.07, 286.46, 286.4, 284.27, 283.51, 283.26, 284.14, 284.72, 284.86, 286.0, 286.6, 286.68, 287.24, 288.31, 288.31, 286.55, 286.29, 286.12, 286.04, 286.84, 287.73, 290.01, 292.26, 291.29, 284.3, 284.21, 283.22, 283.37, 284.9, 285.1, 285.08, 285.37, 285.47, 286.25, 286.58, 286.16, 286.02, 285.89, 286.25, 286.43, 286.75, 288.73, 290.02, 288.56, 287.83, 288.64, 290.39, 286.76, 279.08, 285.17, 286.46, 285.7, 283.41, 281.89, 282.08, 282.53, 287.9, 291.68, 290.61, 285.95, 288.12, 290.25, 290.48, 287.25, 284.43, 285.04, 288.44, 290.5, 289.05, 287.03, 287.32, 286.86, 283.61, 283.47, 285.06, 285.5, 284.69, 285.12, 284.28, 285.19, 285.63, 285.88, 286.69, 286.48, 286.03, 285.74, 285.81, 286.0, 286.26, 286.38, 286.54, 287.05, 287.63, 288.26, 290.41],\n\t\t\t\t\"Auxiliar Electrode NO2\": [288.92, 288.44, 287.95, 286.8, 287.33, 287.28, 287.05, 287.49, 287.25, 287.19, 287.63, 287.82, 288.33, 288.2, 288.47, 288.79, 289.24, 289.38, 289.97, 289.35, 289.46, 288.99, 288.91, 289.44, 289.11, 288.05, 287.22, 287.58, 287.02, 287.3, 286.32, 286.39, 286.42, 286.39, 286.95, 287.16, 287.7, 287.63, 288.07, 288.0, 287.94, 288.03, 288.5, 288.74, 288.78, 288.84, 289.08, 290.14, 290.51, 287.73, 287.28, 286.95, 286.33, 286.72, 287.03, 287.29, 287.27, 287.18, 287.75, 288.03, 288.17, 288.25, 288.3, 288.54, 288.62, 288.85, 290.52, 292.17, 291.0, 290.47, 289.07, 290.1, 290.79, 287.38, 284.95, 285.68, 285.63, 286.08, 285.97, 286.01, 285.49, 286.25, 287.58, 288.47, 287.79, 287.65, 287.97, 288.33, 288.3, 287.68, 287.41, 287.13, 287.42, 287.62, 287.97, 288.45, 288.98, 288.01, 287.64, 287.56, 287.1, 286.73, 286.97, 286.97, 286.6, 286.87, 287.4, 287.71, 287.8, 287.96, 287.89, 287.83, 287.85, 288.02, 288.21, 288.53, 288.92, 288.74, 288.49, 289.53],\n\t\t\t\t\"Temperature\": [13.59, 15.79, 17.87, 17.51, 17.27, 17.87, 17.25, 17.42, 16.85, 15.21, 13.9, 12.85, 12.34, 11.77, 10.89, 10.33, 9.97, 9.69, 9.44, 9.95, 9.36, 9.2, 8.95, 10.24, 13.56, 15.13, 15.4, 16.44, 16.79, 18.23, 19.33, 19.05, 17.22, 15.52, 13.75, 12.44, 11.57, 10.49, 10.17, 9.69, 9.13, 8.44, 8.1, 8.11, 7.58, 7.47, 6.79, 7.85, 15.07, 17.72, 18.25, 19.08, 18.77, 18.22, 17.85, 17.43, 16.94, 15.63, 14.18, 13.96, 13.74, 13.56, 13.3, 13.14, 13.06, 12.25, 11.23, 11.26, 11.02, 10.22, 8.85, 9.65, 17.61, 23.41, 22.96, 22.28, 22.05, 21.57, 21.04, 20.68, 20.17, 17.31, 15.18, 14.37, 13.51, 13.99, 14.13, 13.86, 13.28, 11.93, 12.44, 12.59, 12.56, 13.75, 14.46, 14.78, 15.91, 17.44, 18.28, 19.05, 19.59, 19.2, 18.95, 18.95, 18.27, 16.59, 15.03, 14.35, 13.08, 12.81, 12.45, 11.74, 11.26, 10.48, 10.14, 9.79, 9.94, 10.13, 9.47, 10.25],\n\t\t\t\t\"Humidity\": [71.97, 65.39, 60.62, 59.97, 61.62, 60.97, 62.77, 64.13, 65.76, 69.9, 75.84, 79.46, 81.28, 82.11, 84.86, 86.43, 88.02, 88.65, 89.52, 88.62, 89.31, 87.73, 87.96, 86.26, 74.78, 67.88, 68.46, 62.94, 59.77, 54.21, 53.95, 56.72, 60.09, 63.35, 69.38, 73.77, 77.52, 81.22, 82.38, 83.14, 84.61, 86.55, 87.99, 88.69, 89.57, 89.7, 90.14, 87.89, 70.77, 64.73, 61.04, 57.24, 57.54, 62.15, 65.59, 66.87, 69.94, 74.18, 79.35, 80.87, 82.93, 84.32, 85.37, 86.59, 88.6, 91.12, 93.75, 93.96, 93.6, 92.94, 91.19, 86.86, 64.37, 42.34, 47.02, 50.1, 51.63, 50.68, 48.23, 47.24, 49.41, 66.87, 80.52, 79.85, 63.63, 63.27, 79.36, 83.82, 79.24, 67.36, 59.67, 59.42, 59.96, 74.39, 80.02, 80.05, 75.67, 68.46, 63.94, 60.43, 58.89, 59.0, 59.79, 57.7, 62.83, 69.08, 74.18, 77.39, 80.56, 80.81, 80.25, 82.95, 85.29, 87.56, 89.2, 90.47, 91.64, 90.91, 90.92, 89.5],\n\t\t\t\t\"Pressure\": [1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1002.0, 1002.0, 1002.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0]\n\t\t\t}\n\t\t]\n\t},\n\t\"options\":{\n\t\t\"attribute\":\"Pressure\",\n\t\t\"arOrder\": 5,\n\t\t\"iOrder\": 1,\n\t\t\"maOrder\": 0\n   }\n}"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/wrapperMethod/arima",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"wrapperMethod",
+								"arima"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - wrapper method - kmeans - schema",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/wrapperMethod/kmeans",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"wrapperMethod",
+								"kmeans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - wrapper method - kmeans - query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"dataDesc\":{\n\t\t\"query\":\"select temperature, humidity, gas_no2 from env_sensors where ds = 'DS_GRC'\"\n\t},\n\t\"options\":{\n\t\t\"nClusters\": 3\n   }\n}"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/wrapperMethod/kmeans",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"wrapperMethod",
+								"kmeans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select feature - wrapper method - kmeans - data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"dataDesc\":{\n\t\t\"data\": [\n\t\t\t{\n\t\t\t\t\"Working Electrode NO2\": [289.84, 288.77, 286.62, 284.81, 285.56, 284.93, 285.36, 285.21, 284.95, 285.59, 286.47, 287.07, 286.68, 286.91, 287.89, 288.01, 287.73, 286.96, 288.85, 288.21, 286.86, 287.31, 288.3, 289.84, 288.21, 287.07, 286.46, 286.4, 284.27, 283.51, 283.26, 284.14, 284.72, 284.86, 286.0, 286.6, 286.68, 287.24, 288.31, 288.31, 286.55, 286.29, 286.12, 286.04, 286.84, 287.73, 290.01, 292.26, 291.29, 284.3, 284.21, 283.22, 283.37, 284.9, 285.1, 285.08, 285.37, 285.47, 286.25, 286.58, 286.16, 286.02, 285.89, 286.25, 286.43, 286.75, 288.73, 290.02, 288.56, 287.83, 288.64, 290.39, 286.76, 279.08, 285.17, 286.46, 285.7, 283.41, 281.89, 282.08, 282.53, 287.9, 291.68, 290.61, 285.95, 288.12, 290.25, 290.48, 287.25, 284.43, 285.04, 288.44, 290.5, 289.05, 287.03, 287.32, 286.86, 283.61, 283.47, 285.06, 285.5, 284.69, 285.12, 284.28, 285.19, 285.63, 285.88, 286.69, 286.48, 286.03, 285.74, 285.81, 286.0, 286.26, 286.38, 286.54, 287.05, 287.63, 288.26, 290.41],\n\t\t\t\t\"Auxiliar Electrode NO2\": [288.92, 288.44, 287.95, 286.8, 287.33, 287.28, 287.05, 287.49, 287.25, 287.19, 287.63, 287.82, 288.33, 288.2, 288.47, 288.79, 289.24, 289.38, 289.97, 289.35, 289.46, 288.99, 288.91, 289.44, 289.11, 288.05, 287.22, 287.58, 287.02, 287.3, 286.32, 286.39, 286.42, 286.39, 286.95, 287.16, 287.7, 287.63, 288.07, 288.0, 287.94, 288.03, 288.5, 288.74, 288.78, 288.84, 289.08, 290.14, 290.51, 287.73, 287.28, 286.95, 286.33, 286.72, 287.03, 287.29, 287.27, 287.18, 287.75, 288.03, 288.17, 288.25, 288.3, 288.54, 288.62, 288.85, 290.52, 292.17, 291.0, 290.47, 289.07, 290.1, 290.79, 287.38, 284.95, 285.68, 285.63, 286.08, 285.97, 286.01, 285.49, 286.25, 287.58, 288.47, 287.79, 287.65, 287.97, 288.33, 288.3, 287.68, 287.41, 287.13, 287.42, 287.62, 287.97, 288.45, 288.98, 288.01, 287.64, 287.56, 287.1, 286.73, 286.97, 286.97, 286.6, 286.87, 287.4, 287.71, 287.8, 287.96, 287.89, 287.83, 287.85, 288.02, 288.21, 288.53, 288.92, 288.74, 288.49, 289.53],\n\t\t\t\t\"Temperature\": [13.59, 15.79, 17.87, 17.51, 17.27, 17.87, 17.25, 17.42, 16.85, 15.21, 13.9, 12.85, 12.34, 11.77, 10.89, 10.33, 9.97, 9.69, 9.44, 9.95, 9.36, 9.2, 8.95, 10.24, 13.56, 15.13, 15.4, 16.44, 16.79, 18.23, 19.33, 19.05, 17.22, 15.52, 13.75, 12.44, 11.57, 10.49, 10.17, 9.69, 9.13, 8.44, 8.1, 8.11, 7.58, 7.47, 6.79, 7.85, 15.07, 17.72, 18.25, 19.08, 18.77, 18.22, 17.85, 17.43, 16.94, 15.63, 14.18, 13.96, 13.74, 13.56, 13.3, 13.14, 13.06, 12.25, 11.23, 11.26, 11.02, 10.22, 8.85, 9.65, 17.61, 23.41, 22.96, 22.28, 22.05, 21.57, 21.04, 20.68, 20.17, 17.31, 15.18, 14.37, 13.51, 13.99, 14.13, 13.86, 13.28, 11.93, 12.44, 12.59, 12.56, 13.75, 14.46, 14.78, 15.91, 17.44, 18.28, 19.05, 19.59, 19.2, 18.95, 18.95, 18.27, 16.59, 15.03, 14.35, 13.08, 12.81, 12.45, 11.74, 11.26, 10.48, 10.14, 9.79, 9.94, 10.13, 9.47, 10.25],\n\t\t\t\t\"Humidity\": [71.97, 65.39, 60.62, 59.97, 61.62, 60.97, 62.77, 64.13, 65.76, 69.9, 75.84, 79.46, 81.28, 82.11, 84.86, 86.43, 88.02, 88.65, 89.52, 88.62, 89.31, 87.73, 87.96, 86.26, 74.78, 67.88, 68.46, 62.94, 59.77, 54.21, 53.95, 56.72, 60.09, 63.35, 69.38, 73.77, 77.52, 81.22, 82.38, 83.14, 84.61, 86.55, 87.99, 88.69, 89.57, 89.7, 90.14, 87.89, 70.77, 64.73, 61.04, 57.24, 57.54, 62.15, 65.59, 66.87, 69.94, 74.18, 79.35, 80.87, 82.93, 84.32, 85.37, 86.59, 88.6, 91.12, 93.75, 93.96, 93.6, 92.94, 91.19, 86.86, 64.37, 42.34, 47.02, 50.1, 51.63, 50.68, 48.23, 47.24, 49.41, 66.87, 80.52, 79.85, 63.63, 63.27, 79.36, 83.82, 79.24, 67.36, 59.67, 59.42, 59.96, 74.39, 80.02, 80.05, 75.67, 68.46, 63.94, 60.43, 58.89, 59.0, 59.79, 57.7, 62.83, 69.08, 74.18, 77.39, 80.56, 80.81, 80.25, 82.95, 85.29, 87.56, 89.2, 90.47, 91.64, 90.91, 90.92, 89.5],\n\t\t\t\t\"Pressure\": [1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1002.0, 1002.0, 1002.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1002.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0, 1003.0]\n\t\t\t}\n\t\t]\n\t},\n\t\"options\":{\n\t\t\"nClusters\": 3\n   }\n}"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/wrapperMethod/kmeans",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"wrapperMethod",
+								"kmeans"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

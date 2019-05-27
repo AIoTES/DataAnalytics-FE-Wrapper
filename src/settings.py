@@ -1,0 +1,6 @@
+import os
+
+REST_URL = '0.0.0.0'
+REST_PORT = 5000
+
+ANALYTICS_SERVER = os.getenv('ANALYTICS_SERVER')

@@ -6,6 +6,7 @@ COPY requirements.txt /app/src/requirements.txt
 RUN pip install --no-cache-dir --trusted-host=pypi.python.org -r /app/src/requirements.txt
 
 COPY ./src /app/src
+COPY ./resources /app/resources
 
 ENV PYTHONPATH /app
 WORKDIR "/app/src"
